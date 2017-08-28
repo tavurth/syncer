@@ -1,8 +1,36 @@
 "use strict";
 
-import Utils from '../Utils'
 import SocketIO from 'socket.io-client'
 import Actions from './Actions'
+
+/**
+ * Use to generate a unique name to be used somewhere in the application
+ * This name will increment from 0 and should not be used for data that is
+ * shared by other clients.
+ *
+ * @param kwargs (String) When no object, just use the string as the basic name for the number
+ * @param kwargs (Object) Use kwargs.type to identify the type for the number
+ * @returns {string}
+ */
+function generate_name(kwargs) {
+
+    let type;
+
+    // Did we just pass a name via string?
+    if (typeof kwargs === 'string') {
+        type = kwargs;
+    }
+    // Maybe we passed a complex argument or no argument at all
+    else {
+        kwargs = kwargs || {};
+
+        // If no type was specified use a default
+        type = get(kwargs, 'type', 'NoType');
+    }
+
+    // Increment our counter for the name and return it
+    return type + '_' + inc(nameGenerationCounter, type, 1);
+}
 
 // let DEBUG = true;
 let DEBUG = false;
@@ -187,7 +215,7 @@ export default class Syncer {
 
 			      // Just generate a default name
 			      else {
-				        name = Utils.generate_name('Syncer_await');
+				        name = generate_name('Syncer_await');
 			      }
 
 			      // Make sure we've extracted the name for the server
