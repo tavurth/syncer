@@ -3,6 +3,16 @@
 import SocketIO from 'socket.io-client'
 import Actions from './Actions'
 
+function get(object, key, defaultValue) {
+    object = object || {};
+
+    if (object && object.hasOwnProperty(key)) {
+        return object[key];
+    }
+
+    return defaultValue;
+}
+
 /**
  * Use to generate a unique name to be used somewhere in the application
  * This name will increment from 0 and should not be used for data that is
@@ -12,6 +22,7 @@ import Actions from './Actions'
  * @param kwargs (Object) Use kwargs.type to identify the type for the number
  * @returns {string}
  */
+let nameGenerationCounter = {};
 function generate_name(kwargs) {
 
     let type;
