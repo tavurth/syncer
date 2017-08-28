@@ -1,0 +1,25 @@
+{
+  "name": "syncer",
+  "version": "0.5.0",
+  "description": "gun.js style peer-to-peer database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tavurth/syncer.git"
+  },
+  "keywords": [
+    "peer-to-peer",
+    "gun.js",
+    "database",
+    "socket.io"
+  ],
+  "author": "Will Whitty <Tavurth@gmail.com> (http://github.com/tavurth)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tavurth/syncer/issues"
+  },
+  "homepage": "https://github.com/tavurth/syncer#readme"
+}
